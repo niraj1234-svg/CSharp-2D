@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 public class GameOverUI : MonoBehaviour
 {
@@ -9,6 +9,6 @@ public class GameOverUI : MonoBehaviour
 
     void OnEnable()
     {
-        cointext.text = "Coins Collected: " + GameManager.instance.coin;
+        cointext.text = "Coins Collected: " + GameManager.instance.coins;
     }
 }
