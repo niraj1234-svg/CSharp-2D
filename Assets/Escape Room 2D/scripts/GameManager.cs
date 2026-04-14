@@ -3,10 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Winpanel;
-    public GameObject gameOverPanel;
     public static GameManager instance;
-    public int coin = 0;
+
+    public GameObject winPanel;
+    public GameObject gameOverPanel;
+
+    public int coins = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -14,34 +17,58 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else { 
+        else
+        {
             Destroy(gameObject);
         }
     }
-    public void AddCoin(int amount)
+
+    void Start()
     {
-        coin += amount;
-    }
-    public void ResetCoins()
-    {
-        coin = 0;
+        coins = SaveSystem.LoadCoins(); // fixed name
     }
 
-    public void Wingame()
+    public void AddCoin(int amount)
+    {
+        coins += amount;
+    }
+
+    public void ResetCoins()
+    {
+        coins = 0;
+    }
+
+    public void WinGame()
     {
         Time.timeScale = 0f;
-        Winpanel.SetActive(true);
+
+        if (winPanel != null)
+            winPanel.SetActive(true);
+
+        int level = SceneManager.GetActiveScene().buildIndex;
+
+        SaveSystem.SaveGame(coins, level + 1); // fixed name
     }
+
     public void GameOver()
     {
         Time.timeScale = 0f;
-        gameOverPanel.SetActive(true);
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
     }
-    public void Nextlevel()
+
+    public void NextLevel()
     {
         Time.timeScale = 1f;
+
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene + 1);
     }
-   
+
+    public void ContinueGame()
+    {
+        int savedLevel = SaveSystem.LoadLevel(); // fixed name
+        SceneManager.LoadScene(savedLevel);
+    }
 }

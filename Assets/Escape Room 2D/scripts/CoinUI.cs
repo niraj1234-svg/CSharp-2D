@@ -9,6 +9,6 @@ public class CoinUI : MonoBehaviour
     void Update()
     {
         // Added .ToString() for cleaner practice, though C# handles the string addition
-        cointext.text = "Coin: " + GameManager.instance.coin.ToString();
+        cointext.text = "Coin: " + GameManager.instance.coins.ToString();
     }
 }
