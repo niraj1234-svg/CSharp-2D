@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Suuney Vally/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Escape Room 2D/scenes/MainMenu.unity
+    guid: 91b102be6ff8f874c8c1ca8f5ee61816
+  - enabled: 1
     path: Assets/Escape Room 2D/scenes/Level1.unity
     guid: 04b588ced2f18a44186da6c9de03b3c8
   - enabled: 1

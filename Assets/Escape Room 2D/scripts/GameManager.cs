@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        coins = SaveSystem.LoadCoins(); // fixed name
+        coins = SaveSystem.LoadCoins();
     }
 
     public void AddCoin(int amount)
@@ -46,8 +46,7 @@ public class GameManager : MonoBehaviour
             winPanel.SetActive(true);
 
         int level = SceneManager.GetActiveScene().buildIndex;
-
-        SaveSystem.SaveGame(coins, level + 1); // fixed name
+        SaveSystem.SaveGame(coins, level + 1);
     }
 
     public void GameOver()
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        int savedLevel = SaveSystem.LoadLevel(); // fixed name
+        int savedLevel = SaveSystem.LoadLevel();
         SceneManager.LoadScene(savedLevel);
     }
 }
